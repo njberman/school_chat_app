@@ -1,0 +1,10 @@
+#room-container.columns {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 95%;
+  margin: 0 auto;
+}
+
+#room-container.columns > .column.card {
+  margin: 1.15rem;
+}
