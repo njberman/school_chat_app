@@ -4,6 +4,8 @@ const roomContainer = document.getElementById('room-container');
 const messageForm = document.getElementById('send-container');
 const messageInput = document.getElementById('message-input');
 
+document.querySelector('div > div > div a').click();
+
 socket.on('get-master-password', (pwd) => {
 //   if (!Cookies.get('signed_in')) {
 //     while (true) {
