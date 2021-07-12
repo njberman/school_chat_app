@@ -51,7 +51,8 @@ io.on('connection', (socket) => {
       name: rooms[room].users[socket.id],
     });
       prev = rooms[room].users[socket.id];
-    }
+    } else {
+      socket.to(room).broadcast.emit('kicked');
   });
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach((room) => {
