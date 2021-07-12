@@ -44,7 +44,9 @@ socket.on('get-master-password', (pwd) => {
   });
 
   socket.on('chat-message', (data) => {
+    setTimeout(() => {
     appendMessage(`${data.name}: ${data.message}`);
+    }, 1000);
   });
 
   socket.on('user-connected', (name) => {
