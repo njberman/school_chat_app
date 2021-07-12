@@ -5,15 +5,15 @@ const messageForm = document.getElementById('send-container');
 const messageInput = document.getElementById('message-input');
 
 socket.on('get-master-password', (pwd) => {
-  if (!Cookies.get('signed_in')) {
-    while (true) {
-      const result = prompt('Please enter the master password');
-      if (result === pwd) {
-        Cookies.set('signed_in', true, { SameSite: 'Lax' });
-        break;
-      }
-    }
-  }
+//   if (!Cookies.get('signed_in')) {
+//     while (true) {
+//       const result = prompt('Please enter the master password');
+//       if (result === pwd) {
+//         Cookies.set('signed_in', true, { SameSite: 'Lax' });
+//         break;
+//       }
+//     }
+//   }
 
   if (messageForm != null) {
     while (true) {
