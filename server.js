@@ -35,6 +35,8 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomName: req.params.room });
 });
 
+let prev = '';
+
 io.on('connection', (socket) => {
   socket.emit('get-master-password', process.env.MASTER_PASSWORD);
   socket.on('new-user', (room, name) => {
@@ -43,10 +45,13 @@ io.on('connection', (socket) => {
     socket.to(room).broadcast.emit('user-connected', name);
   });
   socket.on('send-chat-message', (room, message) => {
+    if (rooms[room].users[socket.id] != prev) {
     socket.to(room).broadcast.emit('chat-message', {
       message: message,
       name: rooms[room].users[socket.id],
     });
+      prev = rooms[room].users[socket.id];
+    }
   });
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach((room) => {
