@@ -59,5 +59,6 @@ socket.on('get-master-password', (pwd) => {
     const messageElement = document.createElement('div');
     messageElement.innerText = message;
     messageContainer.append(messageElement);
+    window.scrollTo(0, document.body.scrollHeight);
   }
 });
