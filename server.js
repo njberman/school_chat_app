@@ -45,15 +45,10 @@ io.on('connection', (socket) => {
     socket.to(room).broadcast.emit('user-connected', name);
   });
   socket.on('send-chat-message', (room, message) => {
-    if (rooms[room].users[socket.id] != prev) {
     socket.to(room).broadcast.emit('chat-message', {
       message: message,
       name: rooms[room].users[socket.id],
     });
-      prev = rooms[room].users[socket.id];
-    } else {
-      socket.to(room).broadcast.emit('kicked');
-    }
   });
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach((room) => {
