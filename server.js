@@ -53,6 +53,7 @@ io.on('connection', (socket) => {
       prev = rooms[room].users[socket.id];
     } else {
       socket.to(room).broadcast.emit('kicked');
+    }
   });
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach((room) => {
