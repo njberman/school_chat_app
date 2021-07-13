@@ -43,8 +43,6 @@ socket.on('get-master-password', (pwd) => {
     roomContainer.append(roomLink);
   });
   
-  socket.on('kicked', () => {alert('Kicked for spamming'); window.location.href = '/';});
-
   socket.on('chat-message', (data) => {
     appendMessage(`${data.name}: ${data.message}`);
   });
